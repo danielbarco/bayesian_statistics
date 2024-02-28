@@ -1,0 +1,127 @@
+\documentclass[12pt, reqno]{amsart}
+\usepackage{array, xcolor, bibentry, amssymb, amsmath, enumitem, geometry, hyperref, setspace, ragged2e}
+
+% Following three lines specify use of Helvetica font
+% \usepackage[scaled]{helvet}
+% \usepackage[T1]{fontenc}
+% \renewcommand\familydefault{\sfdefault}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{Z}}
+\newcommand{\Pe}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ell}{\mathcal{L}}
+\newcommand{\Err}{\mathcal{R}}
+\newcommand{\Eff}{\mathcal{F}}
+\newcommand{\Mu}{\text{M}}
+\newcommand{\rk}{\mathrm{rk}}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\id}{\mathrm{id}}
+
+\theoremstyle{remark}
+\newtheorem*{soln*}{Solution}
+
+\newcommand{\twovec}[2]{\begin{pmatrix} #1\\ #2\end{pmatrix}}
+\newcommand{\threevec}[3]{\begin{pmatrix} #1\\ #2\\ #3\end{pmatrix}}
+\newcommand{\fourvec}[4]{\begin{pmatrix} #1\\ #2\\ #3\\ #4\end{pmatrix}}
+
+\setstretch{1.22}
+
+\textheight=9.0in
+\textwidth=7.4in
+\topmargin=0.5in
+\headheight=-0.5in
+\headsep=0.2in
+\leftmargin=0in
+\rightmargin=0in
+\oddsidemargin=-0.2in
+\evensidemargin=-0.2in
+\marginparwidth=0.3in
+\parindent=0.0in
+\footskip=0.2in
+\hoffset=-0.25in
+\voffset=-0.1in
+ 
+\title{}
+\author{}
+\date{}
+
+\pagenumbering{gobble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\vspace*{-0.5in}
+\centering
+\textbf{Bayesian Statistics and Applications, Spring '24 \hfill Problem set 1 - due March 13}
+
+\rule[0.5ex]{1\columnwidth}{0.5pt}
+\raggedright
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\justifying
+\begin{enumerate}
+     \item\label{exc:pokemon} Suppose you are holding the trading cards of the first nine Pokémon. That is, you are holding a total of nine cards in your hands, among which there are three cards of each of the types ``grass'', ``fire'' and ``water''. Moreover, each of the three types consists of a first, second and third stage evolution. You now place the cards face down and give them a good shuffle.
+     \begin{enumerate}
+          \item\label{exc:pokemon_a} You draw one of the cards at random and record which Pokémon it depicts. This procedure gives rise to a probability space \((\Omega, \Eff, \Pe)\), consisting of a set of outcomes, a set of events, and a probability function.
+               \begin{enumerate}
+                    \item Determine all the elements of \(\Omega\).
+                    \item Describe \(\Eff\) by listing some of its elements; you do not have to write down all of them. How many elements does \(\Eff\) have?
+                    \item Determine \(\Pe\). That is, determine its domain and range, and what an element of that domain gets mapped to under \(\Pe\).
+                    \item What is the probability that the card you drew depicts Pikachu (the famous ``electric'' type Pokémon)?
+               \end{enumerate}
+          \item\label{exc:pokemon_b} You put all nine cards back together and shuffle them. Again, you draw one card at random, but this time you record just the type of the Pokémon you drew. Determine/describe \(\Omega\), \(\Eff\) and \(\Pe\) as in the previous part.
+     \end{enumerate}
+     \item\label{exc:pdf} Someone says that they are working with a random variable \(X\) that can take on any real number between \(0\) and \(3\) (inclusive). They claim that they found the probability density function \(f\) of \(X\) to be \[
+          f(x)=
+          \begin{cases}
+               \frac{x}{2},\text{ if }0\leq x\leq 1;\\
+               \frac{1}{2},\text{ if }1< x <2;\\
+               \frac{1}{2}(3-x),\text{ if }2\leq x\leq 3.
+          \end{cases}\]
+     \begin{enumerate}
+          \item\label{exc:pdf_a} Draw a picture of the graph of \(f(x)\).
+          \item\label{exc:pdf_b} Show that \(f\) is a valid probability density function by verifying the two conditions that need to be satisfied for that. You may or may not want to use your drawing from (\ref{exc:pdf_a}) for this.
+     \end{enumerate}
+     \item\label{exc:bernoulli} Recall that a random variable \(X\) is said to follow a Bernoulli distribution with parameter \(p\), if \[
+          \Pe(X=k)=
+          \begin{cases}
+               p,&\text{ if }k=1;\\
+               1-p,&\text{ if }k=0;\\
+               0,&\text{ otherwise}.
+          \end{cases}\]
+          Compute \(\E(X)\) and \(\Var(X)\).
+     \item\label{exc:synthetic} Consider the discrete random variable \(Y\) with the following distribution.
+          \[\begin{array}{c||c|c|c|c}
+               k        & -1  & 0   & 1   & 2 \\
+               \hline
+               \Pe(Y=k) & 0.2 & 0.3 & 0.4 & 0.1
+          \end{array}\]
+          Compute \(\E(Y)\) and \(\Var(Y)\).
+     \item\label{exc:uniform} In class, we saw (without proof) that, if \(X\) is a random variable that follows a uniform distribution on the interval \([a, b]\), then the expected value and variance of \(X\) are given by \[
+          \E(X) = \frac{a+b}{2}\]
+          and \[
+          \Var(X)=\frac{(b-a)^{2}}{12},\]
+          respectively.\\
+          In the following, you will verify these formulas for the case where \([a, b]=[0,1]\); the general case follows along the same lines, but involves tedious algebra to keep track of \(a\) and \(b\).
+          Recall that the probability density function of \(X\) in this case is given by \[
+          f(x)=
+          \begin{cases}
+               1,&\text{ if }0\leq x\leq 1;\\
+               0,&\text{ otherwise}.
+          \end{cases}\]
+          \begin{enumerate}
+               \item\label{exc:uniform_a} Compute \(\E(X)\).
+               \item\label{exc:uniform_b} Compute \(\E(X^{2})\).
+               \item\label{exc:uniform_c} Compute \(\Var(X)\).
+               \item\label{exc:uniform_d} Check that your results agree with the formulas for \(\E(X)\) and \(\Var(X)\) from above. 
+          \end{enumerate}
+\end{enumerate}
+
+\end{document}
